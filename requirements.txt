@@ -26,4 +26,4 @@ python-dotenv
 pyyaml
 regex
 faiss-cpu
-faiss-gpu
+#faiss-gpu
