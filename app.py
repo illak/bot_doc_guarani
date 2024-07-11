@@ -169,7 +169,7 @@ def get_qa_chain(retriever, llm, prompt):
 def init_context(gemini_api_key):
     try:
         print("Obteniendo datos guardados...\n")
-        retriever = load_retriever()
+        retriever = load_retriever(gemini_api_key)
     except:
         print("Falló carga de datos guardados en disco...\n")
         print("Realizando carga inicial de documentos (esto puede demorar)...\n")
