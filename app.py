@@ -6,7 +6,7 @@ from langchain_community.document_transformers import MarkdownifyTransformer
 from langchain_text_splitters import MarkdownHeaderTextSplitter
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain.chains import RetrievalQA
-from langchain.vectorstores import FAISS
+from langchain_community.vectorstores import FAISS
 from langchain_google_genai import GoogleGenerativeAIEmbeddings
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.runnables import RunnablePassthrough
@@ -202,7 +202,7 @@ with st.sidebar:
 
 
 st.title("Chatbot SIU-Guaraní - Gestión 🤖")
-st.subheader("Documentación de las operaciones (versión 3.21.0).")
+st.subheader("Documentación de las operaciones ([versión 3.21.0](https://documentacion.siu.edu.ar/wiki/SIU-Guarani/Version3.21.0/documentacion_de_las_operaciones)).")
 with st.expander("Más información 🔽"):
     st.markdown("Bienvenido/a al chatbot de consultas sobre operaciones del módulo de Gestión\n\
 del sistema Guaraní. Se recomienda hacer preguntas detalladas y completas\n\
@@ -214,7 +214,7 @@ para obtener una mayor eficacia en las respuestas.")
     """)
 
 if "messages" not in st.session_state:
-    st.session_state["messages"] = [{"role": "assistant", "content": "Hola, realizá tu pregunta"}]
+    st.session_state["messages"] = [{"role": "assistant", "content": "¡Hola! Estoy aquí para asistirte. Realizá tu pregunta."}]
 
 for msg in st.session_state.messages:
     st.chat_message(msg["role"]).write(msg["content"])
