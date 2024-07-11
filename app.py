@@ -211,6 +211,9 @@ para obtener una mayor eficacia en las respuestas.")
     Si el BOT no encuentra resultados, pruebe con distintas versiones de una misma pregunta, por ejemplo:
     - *¿Cómo puedo cambiar a un alumno de comisión?*
     - *¿Cómo puedo mover a un alumno de una comisión a otra?*
+                
+⚠️**Recordá que esta herramienta es experimental y puede devolver información que es poco precisa o incorrecta, por lo tanto verificá siempre
+con la documentación oficial y no te quedes con la última palabra del asistente.**
     """)
 
 if "messages" not in st.session_state:
