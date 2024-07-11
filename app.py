@@ -18,7 +18,7 @@ from bs4 import BeautifulSoup
 import os
 import yaml
 
-config = yaml.safe_load(open("config.yml"))
+#config = yaml.safe_load(open("config.yml"))
 
 #os.environ["OPENROUTER_API_KEY"] = config["OPENROUTER_API_KEY"]
 #os.environ["LANGCHAIN_API_KEY"] = config["LANGCHAIN_API_KEY"]
@@ -29,7 +29,7 @@ config = yaml.safe_load(open("config.yml"))
 #os.environ["LANGCHAIN_HUB_API_URL"] = config["LANGCHAIN_HUB_API_URL"]
 #os.environ["SEARCHAPI_API_KEY"] = config["SEARCHAPI_API_KEY"]
 #os.environ["GOOGLE_GEMINI_API_KEY"] = config["GOOGLE_GEMINI_API_KEY"]
-os.environ["GOOGLE_API_KEY"] = config["GOOGLE_GEMINI_API_KEY"]
+#os.environ["GOOGLE_API_KEY"] = config["GOOGLE_GEMINI_API_KEY"]
 
 LOGO_GUARANI = "imgs/logo.png"
 LOGO_LINKEDIN = "imgs/logo_linkedin.png"
@@ -87,11 +87,12 @@ def generate_chunks(docs):
     return chunks
 
 
-def get_retriever(chunks):
+def get_retriever(chunks, gemini_api_key):
 
     #llm = ChatGoogleGenerativeAI(model="gemini-pro")
     #llm = ChatGoogleGenerativeAI(model="gemini-1.5-pro-latest")
-    embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
+    embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001",
+                                              google_api_key=gemini_api_key)
     # 3. Crear embeddings
     #embeddings = HuggingFaceEmbeddings()
     # 4. Almacenar embeddings en FAISS
@@ -164,7 +165,7 @@ def get_qa_chain(retriever, llm, prompt):
     return qa_chain
 
 
-def init_context():
+def init_context(gemini_api_key):
     try:
         print("Obteniendo datos guardados...\n")
         retriever = load_retriever()
@@ -174,7 +175,7 @@ def init_context():
         docs = load_documents()
         transformed_documents = transform_documents(docs)
         chunks = generate_chunks(transformed_documents)
-        retriever = get_retriever(chunks)
+        retriever = get_retriever(chunks, gemini_api_key)
 
     return retriever
         
@@ -222,7 +223,7 @@ if prompt := st.chat_input(placeholder="Su consulta"):
         st.info("Por favor agregue su clave API de Google Gemini.")
         st.stop()
 
-    retriever = init_context()
+    retriever = init_context(gemini_api_key)
 
     llm = ChatGoogleGenerativeAI(
         model="gemini-1.5-pro-latest",
