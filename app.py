@@ -11,6 +11,7 @@ from langchain_google_genai import GoogleGenerativeAIEmbeddings
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.runnables import RunnablePassthrough
 from langchain_core.prompts import PromptTemplate
+import streamlit.components.v1 as components
 
 import re
 from bs4 import BeautifulSoup
@@ -181,9 +182,17 @@ def init_context(gemini_api_key):
     return retriever
         
 
+@st.experimental_dialog("¿Cómo obtengo la clave API?",width="large")
+def tutorial():
+    components.iframe("https://drive.google.com/file/d/1736upJlBXJAw6OFPhwNo8z298XMuN-_J/preview", 
+                      width=720, height=420, )
+
+
 with st.sidebar:
-    st.markdown("Para poder usar el chatbot deberá obtener una clave API de Google Gemini y agregarla debajo:")
+    st.markdown("Para poder usar el chatbot deberás obtener una clave API de Google Gemini y agregarla debajo:")
     gemini_api_key = st.text_input("Gemini API Key", key="chatbot_api_key", type="password")
+    if st.button("¿Cómo obtengo la clave API 🤔?"):
+        tutorial()
     "[Obtener clave API para Gemini](https://ai.google.dev/)"
 
     st.divider()
@@ -208,9 +217,10 @@ with st.expander("Más información 🔽"):
 del sistema Guaraní. Se recomienda hacer preguntas detalladas y completas\n\
 para obtener una mayor eficacia en las respuestas.")
     st.markdown("""
-    Si el BOT no encuentra resultados, pruebe con distintas versiones de una misma pregunta, por ejemplo:
-    - *¿Cómo puedo cambiar a un alumno de comisión?*
-    - *¿Cómo puedo mover a un alumno de una comisión a otra?*
+    Si el BOT no encuentra resultados, podés probar con distintas versiones de una misma pregunta, por ejemplo:
+
+- *¿Cómo puedo cambiar a un alumno de comisión?*
+- *¿Cómo puedo mover a un alumno de una comisión a otra?*
                 
 ⚠️**Recordá que esta herramienta es experimental y puede devolver información que es poco precisa o incorrecta, por lo tanto verificá siempre
 con la documentación oficial y no te quedes con la última palabra del asistente.**
@@ -222,7 +232,7 @@ if "messages" not in st.session_state:
 for msg in st.session_state.messages:
     st.chat_message(msg["role"]).write(msg["content"])
 
-if prompt := st.chat_input(placeholder="Su consulta"):
+if prompt := st.chat_input(placeholder="Tu consulta"):
     if not gemini_api_key:
         st.info("Por favor agregue su clave API de Google Gemini.")
         st.stop()
