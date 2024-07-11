@@ -187,7 +187,7 @@ with st.sidebar:
     "[Obtener clave API para Gemini](https://ai.google.dev/)"
 
     st.divider()
-    st.markdown("Desarrollado por: *Illak Zapata*")
+    st.markdown("Desarrollado por: *Lic. Illak Zapata*")
 
     columns = st.sidebar.columns(6)
 
@@ -201,7 +201,7 @@ with st.sidebar:
         st.write("""<div style="width:100%;text-align:center;"><a href="https://illak-blog.netlify.app/" style="float:center"><img src="https://www.freeiconspng.com/uploads/website-icon-11.png" width="22px"></img></a></div>""", unsafe_allow_html=True)
 
 
-st.title("Chatbot SIU-Guaraní Gestión 🤖")
+st.title("Chatbot SIU-Guaraní - Gestión 🤖")
 st.subheader("Documentación de las operaciones (versión 3.21.0).")
 with st.expander("Más información 🔽"):
     st.markdown("Bienvenido/a al chatbot de consultas sobre operaciones del módulo de Gestión\n\
