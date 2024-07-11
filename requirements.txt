@@ -25,3 +25,5 @@ pypdf
 python-dotenv
 pyyaml
 regex
+faiss-cpu
+faiss-gpu
