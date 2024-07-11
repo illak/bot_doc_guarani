@@ -1,0 +1,26 @@
+# This file may be used to create an environment using:
+# $ conda create --name <env> --file <this file>
+# platform: win-64
+beautifulsoup4=4.12.3=pypi_0
+google-ai-generativelanguage=0.6.6=pypi_0
+google-api-core=2.19.1=pypi_0
+google-api-python-client=2.136.0=pypi_0
+google-auth=2.31.0=pypi_0
+google-auth-httplib2=0.2.0=pypi_0
+google-generativeai=0.7.1=pypi_0
+huggingface-hub=0.23.4=pypi_0
+langchain=0.2.7=pypi_0
+langchain-community=0.2.7=pypi_0
+langchain-core=0.2.12=pypi_0
+langchain-experimental=0.0.62=pypi_0
+langchain-google-genai=1.0.7=pypi_0
+langchain-openai=0.1.14=pypi_0
+langchain-text-splitters=0.2.2=pypi_0
+langchainhub=0.1.20=pypi_0
+langsmith=0.1.84=pypi_0
+markdown-it-py=3.0.0=pypi_0
+markdownify=0.12.1=pypi_0
+pypdf=4.2.0=pypi_0
+python-dotenv=1.0.1=pypi_0
+pyyaml=6.0.1=pypi_0
+regex=2024.5.15=pypi_0
