@@ -108,8 +108,9 @@ def get_retriever(chunks, gemini_api_key):
     return retriever
 
 
-def load_retriever():
-    embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
+def load_retriever(gemini_api_key):
+    embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001",
+                                              google_api_key=gemini_api_key)
 
     # Cargamos el índice
     index_name = "guarani-index"
@@ -171,7 +172,7 @@ def init_context(gemini_api_key):
         retriever = load_retriever()
     except:
         print("Falló carga de datos guardados en disco...\n")
-        print("Realizando carga inicial de documentos...\n")
+        print("Realizando carga inicial de documentos (esto puede demorar)...\n")
         docs = load_documents()
         transformed_documents = transform_documents(docs)
         chunks = generate_chunks(transformed_documents)
