@@ -193,7 +193,7 @@ with st.sidebar:
     gemini_api_key = st.text_input("Gemini API Key", key="chatbot_api_key", type="password")
     if st.button("¿Cómo obtengo la clave API 🤔?"):
         tutorial()
-    "[Obtener clave API para Gemini](https://ai.google.dev/)"
+    "[Obtener clave API para Gemini](https://ai.google.dev/gemini-api?hl=es-419)"
 
     st.divider()
     st.markdown("Desarrollado por: *Lic. Illak Zapata*")
